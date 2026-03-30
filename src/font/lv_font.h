@@ -245,6 +245,30 @@ LV_FONT_DECLARE(lv_font_unscii_16)
 LV_FONT_CUSTOM_DECLARE
 #endif
 
+#if SIYUANHEITI_LIGHT_22_1B
+LV_FONT_DECLARE(SiYuanHeiTi_Light_22_1b)
+#endif
+
+#if SIYUANHEITI_LIGHT_18_1B
+LV_FONT_DECLARE(SiYuanHeiTi_Light_18_1b)
+#endif
+
+#if SIYUANHEITI_LIGHT_28_1B
+LV_FONT_DECLARE(SiYuanHeiTi_Light_28_1b)
+#endif
+
+#if SIYUANHEITI_LIGHT_28_2B
+LV_FONT_DECLARE(SiYuanHeiTi_Light_28_2b)
+#endif
+
+#if SIYUANHEITI_LIGHT_28_4B
+LV_FONT_DECLARE(SiYuanHeiTi_Light_28_4b)
+#endif
+
+#if SIYUANHEITI_LIGHT_3000_28_1B
+LV_FONT_DECLARE(SiYuanHeiTi_Light_3000_28_1b)
+#endif
+
 /**
  * Just a wrapper around LV_FONT_DEFAULT because it might be more convenient to use a function in some cases
  * @return  pointer to LV_FONT_DEFAULT

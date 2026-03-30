@@ -194,12 +194,12 @@ LV_ATTRIBUTE_FAST_MEM void * lv_memcpy(void * dst, const void * src, size_t len)
 LV_ATTRIBUTE_FAST_MEM static inline void * lv_memcpy_small(void * dst, const void * src, size_t len)
 {
     uint8_t * d8 = (uint8_t *)dst;
-    const uint8_t * s8 = (const uint8_t *)src;
+    const uint8_t * si8 = (const uint8_t *)src;//to fix compiling error
 
     while(len) {
-        *d8 = *s8;
+        *d8 = *si8;
         d8++;
-        s8++;
+        si8++;
         len--;
     }
 

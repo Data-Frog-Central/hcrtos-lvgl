@@ -432,15 +432,23 @@ static void indev_keypad_proc(lv_indev_t * i, lv_indev_data_t * data)
 
         /*Move the focus on NEXT*/
         if(data->key == LV_KEY_NEXT) {
-            lv_group_set_editing(g, false); /*Editing is not used by KEYPAD is be sure it is disabled*/
-            lv_group_focus_next(g);
-            if(indev_reset_check(&i->proc)) return;
+            if (g->auto_focus_dis){
+                lv_group_send_data(g, data->key);
+            }else{
+                lv_group_set_editing(g, false); /*Editing is not used by KEYPAD is be sure it is disabled*/
+                lv_group_focus_next(g);
+                if(indev_reset_check(&i->proc)) return;
+            }
         }
         /*Move the focus on PREV*/
         else if(data->key == LV_KEY_PREV) {
-            lv_group_set_editing(g, false); /*Editing is not used by KEYPAD is be sure it is disabled*/
-            lv_group_focus_prev(g);
-            if(indev_reset_check(&i->proc)) return;
+            if (g->auto_focus_dis){
+                lv_group_send_data(g, data->key);
+            }else{
+                lv_group_set_editing(g, false); /*Editing is not used by KEYPAD is be sure it is disabled*/
+                lv_group_focus_prev(g);
+                if(indev_reset_check(&i->proc)) return;
+            }
         }
         else if(!dis) {
             /*Simulate a press on the object if ENTER was pressed*/

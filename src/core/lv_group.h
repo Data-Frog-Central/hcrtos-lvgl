@@ -75,6 +75,9 @@ typedef struct _lv_group_t {
                                    deletion.*/
     uint8_t wrap : 1;           /**< 1: Focus next/prev can wrap at end of list. 0: Focus next/prev stops at end
                                    of list.*/
+    uint8_t auto_focus_dis: 1;  /** 1: key pad do not focus next/prev auto via next/prev key, transfer the key to user
+				  . add by frank*/
+    uint8_t reserved:       7;
 } lv_group_t;
 
 

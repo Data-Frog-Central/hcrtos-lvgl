@@ -425,7 +425,7 @@ const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_IMG_IMG_COGWHEEL_CHROMA_KEYED uint8_t 
 #endif
 };
 
-const lv_img_dsc_t img_benchmark_cogwheel_chroma_keyed = {
+lv_img_dsc_t img_benchmark_cogwheel_chroma_keyed = {
   .header.always_zero = 0,
   .header.w = 100,
   .header.h = 100,

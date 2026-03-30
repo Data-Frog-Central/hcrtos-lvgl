@@ -14,7 +14,9 @@
 #ifndef LV_KCONFIG_IGNORE
     #include "lv_conf_kconfig.h"
     #ifdef CONFIG_LV_CONF_SKIP
+#ifndef LV_CONF_SKIP
         #define LV_CONF_SKIP
+#endif
     #endif
 #endif
 
@@ -133,8 +135,8 @@
 
     /*Set an address for the memory pool instead of allocating it as a normal array. Can be in external SRAM too.*/
     #ifndef LV_MEM_ADR
-        #ifdef CONFIG_LV_MEM_ADR
-            #define LV_MEM_ADR CONFIG_LV_MEM_ADR
+        #ifdef CONFIG_LV_MEM_ADDR
+            #define LV_MEM_ADR CONFIG_LV_MEM_ADDR
         #else
             #define LV_MEM_ADR 0     /*0: unused*/
         #endif
@@ -250,7 +252,8 @@
         #ifdef CONFIG_LV_TICK_CUSTOM_SYS_TIME_EXPR
             #define LV_TICK_CUSTOM_SYS_TIME_EXPR CONFIG_LV_TICK_CUSTOM_SYS_TIME_EXPR
         #else
-            #define LV_TICK_CUSTOM_SYS_TIME_EXPR (millis())    /*Expression evaluating to current system time in ms*/
+	    uint32_t custom_tick_get(void);
+	    #define LV_TICK_CUSTOM_SYS_TIME_EXPR (custom_tick_get())     /*Expression evaluating to current system time in ms*/
         #endif
     #endif
 #endif   /*LV_TICK_CUSTOM*/

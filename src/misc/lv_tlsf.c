@@ -10,7 +10,7 @@
 #undef  printf
 #define printf LV_LOG_ERROR
 
-#define TLSF_MAX_POOL_SIZE LV_MEM_SIZE
+/*#define TLSF_MAX_POOL_SIZE LV_MEM_SIZE*/
 
 #if !defined(_DEBUG)
     #define _DEBUG 0
@@ -1199,7 +1199,8 @@ void * lv_tlsf_realloc(lv_tlsf_t tlsf, void * ptr, size_t size)
     }
     /* Requests with NULL pointers are treated as malloc. */
     else if(!ptr) {
-        p = lv_tlsf_malloc(tlsf, size);
+        /*p = lv_tlsf_malloc(tlsf, size);*/
+    	p = lv_tlsf_memalign(tlsf, 1<<5, size);
     }
     else {
         block_header_t * block = block_from_ptr(ptr);
@@ -1220,7 +1221,8 @@ void * lv_tlsf_realloc(lv_tlsf_t tlsf, void * ptr, size_t size)
         ** block, does not offer enough space, we must reallocate and copy.
         */
         if(adjust > cursize && (!block_is_free(next) || adjust > combined)) {
-            p = lv_tlsf_malloc(tlsf, size);
+            /*p = lv_tlsf_malloc(tlsf, size);*/
+	    	p = lv_tlsf_memalign(tlsf, 1<<5, size);
             if(p) {
                 const size_t minsize = tlsf_min(cursize, size);
                 lv_memcpy(p, ptr, minsize);

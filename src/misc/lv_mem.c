@@ -96,7 +96,7 @@ void lv_mem_init(void)
     tlsf = lv_tlsf_create_with_pool((void *)work_mem_int, LV_MEM_SIZE);
 #endif
 #else
-    tlsf = lv_tlsf_create_with_pool((void *)LV_MEM_ADR, LV_MEM_SIZE);
+    tlsf = lv_tlsf_create_with_pool((void *)lv_mem_adr, LV_MEM_SIZE);
 #endif
 #endif
 
@@ -131,7 +131,8 @@ void * lv_mem_alloc(size_t size)
     }
 
 #if LV_MEM_CUSTOM == 0
-    void * alloc = lv_tlsf_malloc(tlsf, size);
+    /*void * alloc = lv_tlsf_malloc(tlsf, size);*/
+    void * alloc = lv_tlsf_memalign(tlsf, 1<<5, size);
 #else
     void * alloc = LV_MEM_CUSTOM_ALLOC(size);
 #endif

@@ -425,7 +425,7 @@ const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_IMG_IMG_COGWHEEL_RGB uint8_t img_bench
 #endif
 };
 
-const lv_img_dsc_t img_benchmark_cogwheel_rgb = {
+lv_img_dsc_t img_benchmark_cogwheel_rgb = {
   .header.always_zero = 0,
   .header.w = 100,
   .header.h = 100,

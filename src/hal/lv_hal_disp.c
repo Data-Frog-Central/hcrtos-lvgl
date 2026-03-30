@@ -26,6 +26,8 @@
 #if LV_USE_GPU_NXP_PXP || LV_USE_GPU_NXP_VG_LITE
     #include "../draw/nxp/lv_gpu_nxp.h"
 #endif
+#include "../draw/hcge/lv_gpu_hichip.h"
+
 
 #if LV_USE_THEME_DEFAULT
     #include "../extra/themes/default/lv_theme_default.h"
@@ -117,6 +119,10 @@ void lv_disp_drv_init(lv_disp_drv_t * driver)
     driver->draw_ctx_init = lv_draw_arm2d_ctx_init;
     driver->draw_ctx_deinit = lv_draw_arm2d_ctx_init;
     driver->draw_ctx_size = sizeof(lv_draw_arm2d_ctx_t);
+#elif LV_USE_GPU_HICHIP
+    driver->draw_ctx_init = lv_draw_hichip_ctx_init;
+    driver->draw_ctx_deinit = lv_draw_hichip_ctx_init;
+    driver->draw_ctx_size = sizeof(lv_draw_hichip_ctx_t);
 #else
     driver->draw_ctx_init = lv_draw_sw_init_ctx;
     driver->draw_ctx_deinit = lv_draw_sw_init_ctx;

@@ -6,6 +6,9 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+#ifndef LV_CONF_KCONFIG_EXTERNAL_INCLUDE
+#define LV_CONF_KCONFIG_EXTERNAL_INCLUDE "include/generated/autoconf.h"
+#endif
 
 #ifdef LV_CONF_KCONFIG_EXTERNAL_INCLUDE
 #  include LV_CONF_KCONFIG_EXTERNAL_INCLUDE
@@ -24,6 +27,8 @@ extern "C" {
 #  endif
 
 #endif /*LV_CONF_KCONFIG_EXTERNAL_INCLUDE*/
+
+#include "../../lv_hichip_conf.h"
 
 /*******************
  * LV COLOR CHROMA KEY

@@ -323,6 +323,7 @@ void _lv_disp_refr_timer(lv_timer_t * tmr)
 
     refr_invalid_areas();
 
+
     /*If refresh happened ...*/
     if(disp_refr->inv_p != 0) {
 
